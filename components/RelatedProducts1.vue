@@ -8,9 +8,9 @@
         ref="bscarousel"
       >
 
- <SfCarouselItem class="carousel__item" v-for="(product,i) in productss" :key="i" >
+ <SfCarouselItem class="carousel__item"  v-for="(product,i) in productss" :key="i" >
           
-        <SfProductCard 
+        <SfProductCard  
             :title="productGetters.getName(product)"
             :image="productGetters.getCoverImage(product)"        
             :link="localePath(`/p/${productGetters.getId(product)}/${productGetters.getSlug(product)}`)"
@@ -122,7 +122,7 @@ export default {
   },
   props: {
     title: String,
-    products: Array,
+    products: Array,   
     productss: Array,
     loading: Boolean,
   },
@@ -163,13 +163,10 @@ export default {
         }
       }
     };
-  },
-  methods : {
-     myfun (product) { 
-      this.temp.push(product)                       
-      localStorage.setItem('recent1', JSON.stringify(this.temp));          
-    }
-  },
+  },  
+  mounted () {    
+    const currentproduct = JSON.parse(localStorage.getItem("current"))[0].id       
+  }
 };
 </script>
 
@@ -200,6 +197,8 @@ export default {
   }
   .glide__slide {
     height: auto;
+    width: auto!important;;
   }
 }
+
 </style>

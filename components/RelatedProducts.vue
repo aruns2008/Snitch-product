@@ -46,12 +46,13 @@ import {
 } from "@storefront-ui/vue";
 
 import { productGetters } from "@vue-storefront/shopify";
-import product from "~/pages/Product.vue";
+
 
 export default {
   name: "RelatedProducts",
   data() {
     return {
+      currentproduct:[],
       temp: [],
       alreadyin: null,
       k: 0,
@@ -59,14 +60,18 @@ export default {
   },
   methods: {
     myfunc(product) {
-      const item = JSON.parse(localStorage.getItem("recent"));
-      
+      const item = JSON.parse(localStorage.getItem("recent")); 
+      this.currentproduct.push(product)  
+      localStorage.setItem("current", JSON.stringify(this.currentproduct));             
+      this.currentproduct.length>0?this.currentproduct.shift():''   
+         
       if (item != null) {
         this.temp = item;
         this.temp.filter((item1) => {           
             return item1.id.includes(product.id)
-            }).length==0?this.temp.push(product):''                
-      this.temp.length>4?this.temp.shift():''
+            }).length==0?this.temp.push(product):''             
+        this.temp.length>5?this.temp.shift():''
+      
       localStorage.setItem("recent", JSON.stringify(this.temp));
       }
       if (item == null) {
@@ -84,7 +89,7 @@ export default {
     SfProductCard,
     SfSection,
     SfLoader,
-    product,
+
   },
   props: {
     title: String,

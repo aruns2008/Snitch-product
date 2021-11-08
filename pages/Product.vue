@@ -1,5 +1,5 @@
 <template>
-<div >
+<div >  
   <SfLoader
     v-if="productloading"
     class="pdc-pdp-loader"
@@ -39,10 +39,9 @@
               class="sf-heading--no-underline sf-heading--left"
             />
           </div>
- <div class="review">
+        <div class="review">
            <a href="#" class="rev"> <img src="https://res.cloudinary.com/auki-digital-solutions/image/upload/v1636018224/Capture1.png" alt="alt" style="width:110px">&nbsp; 2 review</a>
-          </div>
-       
+          </div>       
           <div class="product__price-and-rating">
             <template
               v-if="
@@ -80,172 +79,32 @@
 
 
 
-          <template>
-      <div style="display: flex">
-            <div
-              style="
-                width: 59.152px;
-                height: 59.152px;
-                background-size: cover;
-                background-image: url(https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_sep21_1465.jpg?v=1635601260&amp;width=80&amp;height=80&amp;crop=top&amp;format=pjpg);
-              "
-              class="
-                star-set-image
-              "
-              swatch-inside="true"
-            >
-              
-            </div>
-            <div
-              style="
-                width: 59.152px;
-                height: 59.152px;
-                background-size: cover;
-                background-image: url(https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_Sep21__Day22324.jpg?v=1635601359&amp;width=80&amp;height=80&amp;crop=top&amp;format=pjpg);
-              "
-              class="
-                star-set-image
-              "
-              swatch-inside="true"
-            >
-              
-            </div>
-            <div
-              style="
-                width: 59.152px;
-                height: 59.152px;
-                background-size: cover;
-                background-image: url(https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_sep21_1717.jpg?v=1635601471&amp;width=80&amp;height=80&amp;crop=top&amp;format=pjpg);
-              "
-              class="
-                star-set-image
-              "
-              swatch-inside="true"
-            >
-              
-            </div>
-            <div
-              style="
-                width: 59.152px;
-                height: 59.152px;
-                background-size: cover;
-                background-image: url(https://cdn.shopify.com/s/files/1/0420/7073/7058/products/Snitch_sep21_1739.jpg?v=1635601629&amp;width=80&amp;height=80&amp;crop=top&amp;format=pjpg);
-              "
-              class="
-                star-set-image
-                
-              "
-              swatch-inside="true"
-            >
-              
-            </div>
-          </div>
- </template>
-
 <template>
-<div>
-  <div>
-    <label class="swatch-label swatch-label-custom-image"
-      ><span class="swatch-option-name">Color</span
-      ><span class="swatch-variant-name">
-        <span class="swatch-variant-name">—</span> Navy</span
-      ></label
-    >
-  </div>
-  <div
-    style="
-      background-color:#000080;
-      width: 40.152px;
-      height: 40.152px;
-      background-size: cover;
-    "
-    class="star-set-image"
-    swatch-inside="true"
-  >
-    
-  </div>
-</div>
-</template>
+  
+ <productintro></productintro>
 
-<template>
+          
+
+ 
  <div>
-            <label class="swatch-label swatch-label-custom-image"
-              ><span class="swatch-option-name">Size</span></label
-            >
-          </div>
-          <div style="display:flex;  " class="padd">
-            <div
-              style="
-                background-color: white;
-                width: 40.152px;
-                height: 40.152px;
-                background-size: cover;
-                border: solid 1px;
-              "
-              class="star-set-image"
-              swatch-inside="true"
-            >
-              <p class="size">S</p>
-            </div>
-            <div
-              style="
-                background-color: white;
-                width: 40.152px;
-                height: 40.152px;
-                background-size: cover;
-                border: solid 1px;
-              "
-              class="star-set-image"
-              swatch-inside="true"
-            >
-              <p class="size">M</p>
-            </div>
-            <div
-              style="
-                background-color: white;
-                width: 40.152px;
-                height: 40.152px;
-                background-size: cover;
-                border: solid 1px;
-              "
-              class="star-set-image"
-              swatch-inside="true"
-            >
-              <p class="size">L</p>
-            </div>
-            <div
-              style="
-                background-color: white;
-                width: 40.152px;
-                height: 40.152px;
-                background-size: cover;
-                border: solid 1px;
-              "
-              class="star-set-image"
-              swatch-inside="true"
-            >
-              <p class="size">XL</p>
-            </div>
-          </div>
-          <hr class="line" />
-
-</template>
-
-<template>
-   <div>
-  <button id="show-btn" class="btn" @click="$bvModal.show('bv-modal-example')"><span class=""
-              ><span class="_ks_text"
-                >FIND YOUR SIZE <span class="size-question">?</span></span
-              ></span
-            ></button>
-
-  <b-modal id="bv-modal-example" hide-footer>
-    <b-img src="https://res.cloudinary.com/auki-digital-solutions/image/upload/v1635931775/Capture.png" class="img" alt="#"/>
-  </b-modal>
+          <p
+            class="product__description desktop-only"
+          >
+          Select a Size
+          </p>
+          <div v-if="options && Object.keys(options).length > 0">
+            <template v-for="(option, o) in options">
+              <SizeButton @size-select="customfilter" :option="option" :o="o" v-if="o.toLowerCase() !== 'color'" :key="`attrib-${o}`"></SizeButton>
+            </template>
+    </div>
 </div>
+  
+<modal-button></modal-button>
+
+
+
 </template>
- <template>
-   
+ <template>   
  </template>
 
  <div class="px-3">
@@ -275,9 +134,10 @@
                 >
                   BUY NOW
                 </SfButton>
+                
               </SfLink>
               </div>
-              <div class="col-3">
+              <div class="col-3">               
               <SfButton
                 class="Add mt-2"
                 :disabled="loading"
@@ -287,41 +147,9 @@
               </SfButton>
               </div>
               </div>
-            </template>         
-            
-          </SfAddToCart>
-          
-
-          
-          <div>
-            <p class="deliveryoption mt-2 py-2">Delivery Options</p>
-            <input
-              class="pincodebox"
-              type="text"              
-              maxlength="6"
-              name="PostalCode"
-              placeholder="Enter pincode" v-model="enteredcode"
-            />
-            <button
-              type="button"
-              class="deliverybox"
-              @click="checkCodAvailability()"
-            >
-              Check
-            </button>
-          </div>
-          <div class="codeavailable pt-2">
-            {{this.output}}
-          </div>
-          <div>
-            <p class="deliverydialogue">
-              Please enter PIN code to check delivery time & Pay on Delivery
-              Availability
-            </p>
-            <div class="pt-5 ">
-              <img class="offrimg" src="~/assets/a.png" alt="#" />
-            </div>
-          </div>
+            </template>                     
+          </SfAddToCart>                 
+          <Codeckeck></Codeckeck>
         </div>
       </div>
     </div>
@@ -333,9 +161,11 @@
     </div>
 
     <div class="space"></div>
+
+     <!-- Product Description Section -->
     <LazyHydrate when-visible >
-      <RelatedProducts
-        :productss="this.temp"                
+      <RelatedProducts v-if="this.temp1.length>0"
+        :productss="this.temp1"                       
         :loading="relatedLoading"
         title="Recently viewed items"
       />
@@ -401,6 +231,10 @@ import useUiNotification from "~/composables/useUiNotification";
 import RelatedProducts1 from "~/components/RelatedProducts.vue";
 import description from "~/components/description.vue";
 import LowerBanner from "~/components/LowerBanner.vue";
+import Codeckeck from "~/components/Codecheck.vue";
+import productintro from "~/components/productintro.vue";
+import ModalButton from "~/components/ModalButton.vue";
+import SizeButton from "~/components/ButtonSize.vue";
 
 export default {
   name: "Product",
@@ -416,15 +250,7 @@ export default {
       setTimeout(() => {
         window.location.replace(checkoutURL);
       }, 400);
-    },
-    checkCodAvailability () { 
-      
-      this.pincodes.filter((item1) => {           
-            return item1.code.includes(this.enteredcode)
-            }).length==0?this.output = 'Cash on Delivery is not available to this postal code.':this.output='Cash on Delivery Available' 
-            this.enteredcode = ''
-      
-    },
+    },  
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async addingToCart(Productdata) {
       await this.addItem(Productdata).then(() => {
@@ -459,8 +285,19 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   mounted() {
+    const currentproduct = JSON.parse(localStorage.getItem("current"))[0].id    
     const items = JSON.parse(localStorage.getItem("recent"));
-    this.temp = items,   
+    this.temp = items    
+    this.temp.filter((item1) => {           
+            return item1.id.includes(currentproduct)
+            }).length==0?'':this.temp.pop()
+
+    this.temp.filter((item1) => {           
+             item1.id.includes(currentproduct)?this.temp.splice(this.temp.indexOf(item1), 1):''
+     });
+
+    this.temp1=this.temp 
+
     window.addEventListener("load", () => {
       this.setGalleryWidth();
     });
@@ -586,7 +423,9 @@ export default {
       });
       await searchRelatedProducts({ productId: id.value, related: true });
     });
-
+ const customfilter = (a)=>{
+        updateFilter(a);
+    }
     const updateFilter = (filter) => {
       if (options.value) {
         Object.keys(options.value).forEach((attr) => {
@@ -635,6 +474,7 @@ export default {
       setBreadcrumb,
       atttLbl,
       checkoutURL,
+      customfilter,
     };
   },
   components: {
@@ -667,14 +507,19 @@ export default {
     RelatedProducts1,
     description,
     LowerBanner,
-    SfLink
+    SfLink,
+    Codeckeck,
+    productintro,
+    ModalButton,
+    SizeButton,
   },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
-    return {      
-      output : '',
+    return {          
+      output : '',      
       recentlyviewd: [],
       temp: [],
+      temp1:[],
       enteredcode : '',      
       pincodes : [ 
         {
@@ -994,57 +839,6 @@ p {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeSpeed;
 }
-.deliverydialogue {
-  margin: 19px 0 0;
-  line-height: 1.2;
-  color: grey;
-  font-size: 14px;
-}
-.pincodebox {
-  font-family: Jost, sans-serif;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  text-rendering: optimizeSpeed;
-  width: 100%;
-  font-size: 13px;
-  color: grey;
-  height: 48px;
-  padding: 0 85px 0 20px;
-  position: relative;
-  border-color: #000;
-}
-.deliverybox {
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 500;
-  position: absolute;
-  margin-left: -100px;
-  margin-top: 13px;
-  letter-spacing: 0.7px;
-  background: 0 0;
-  border: none;
-  display: inline-block;
-  -webkit-appearance: none;
-}
-.deliveryoption {
-  font-size: 18px;
-  text-transform: inherit;
-  color: grey;
-  font-weight: 400;
-  font-family: Jost,sans-serif;
-  line-height: 1.6;
-  letter-spacing: 0.3px;
-  margin-bottom: 20 px;
-}
-.codeavailable {
-  color: rgb(255, 0, 0);
-  font-size: 13px;
-  font-weight: 400;
-  font-family: Jost,sans-serif;
-    letter-spacing: .04em;
-}
 .star-set-image{
   border-radius: 5px;
   margin: 10px;
@@ -1134,5 +928,14 @@ p.size:hover,p.size:active {color: white !important;}
     width: 100%;
   }  
 
+}
+.product__description{
+      font-weight: 600;
+    font-style: normal;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+        font-size: 17px;
+    
 }
 </style>
