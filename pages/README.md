@@ -1,5 +1,7 @@
+Buynow Button
 
-
+Product.vue --->123-151
+                248-253
 Arun
 
   1) Recently Viewed Products
@@ -36,3 +38,5 @@ Jofin
 	Product	.vue --->89-100
 
 4)You may like section
+    
+    product.vue --> 173-178
